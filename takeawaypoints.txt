@@ -1,0 +1,26 @@
+backend flow
+
+Schema
+
+Model
+
+Controller
+
+Route
+
+index
+
+
+frontend            Backend             Database
+
+Request             response            save data
+(data phathauxa)
+hit api
+
+
+CRUD
+
+C --->     Create       "post"
+R --->     Read         "Get"            two type read all and read
+U --->     Update       "patch"
+D --->     Delete      "Delete"
