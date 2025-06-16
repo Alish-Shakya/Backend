@@ -1,5 +1,9 @@
+import { User } from "../Model/modol";
+
 export const createUser = async (req, res, next) => {
   try {
+    //Frontend always request
+    //Backend always response
     let result = await User.create(req.body);
     res.status(201).json({
       success: true,

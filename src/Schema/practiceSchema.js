@@ -1,18 +1,27 @@
 import mongoose from "mongoose";
 
 const practiceSchema = new mongoose.Schema({
-  Name: {
+  fullname: {
     type: String,
     required: true,
   },
-  Class: {
+
+  contact: {
     type: Number,
     required: true,
   },
-  DOB: {
+
+  education: {
+    type: String,
+    required: true,
+  },
+
+  isMarried: {
     type: Boolean,
+  },
+
+  dob: {
+    type: Date,
     required: true,
   },
 });
-
-export default practiceSchema;
