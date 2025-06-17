@@ -5,6 +5,8 @@ import connectDB from "./src/ConnectDB/connectDB.js";
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 connectDB();
 
 app.listen(port, () => {

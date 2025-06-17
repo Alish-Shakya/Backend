@@ -23,4 +23,12 @@ CRUD
 C --->     Create       "post"
 R --->     Read         "Get"            two type read all and read
 U --->     Update       "patch"
-D --->     Delete      "Delete"
+D --->     Delete       "Delete"
+
+
+
+
+paramater two
+
+rout paramater
+query parameter
