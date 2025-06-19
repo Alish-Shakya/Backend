@@ -47,3 +47,21 @@ export const readSingleStudent = async (req, res, next) => {
     });
   }
 };
+
+export const updataStudent = async (req, res, next) => {
+  try {
+    let result = await Student.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "student updated",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
