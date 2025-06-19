@@ -32,3 +32,18 @@ paramater two
 
 rout paramater
 query parameter
+
+
+
+
+login management
+
+register
+login
+my-profile
+update-profile
+update-password
+forget password
+forget password
+reset password
+log out

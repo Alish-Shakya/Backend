@@ -9,7 +9,7 @@ export const createStudent = async (req, res, next) => {
       data: result,
     });
   } catch (error) {
-    res.status(400).jso({
+    res.status(400).json({
       success: false,
       message: error.message,
     });

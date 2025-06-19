@@ -1,4 +1,4 @@
-// id, secretKey, expirtInfo
+// id, secretKey, expiryInfo
 
 import jwt from "jsonwebtoken";
 
