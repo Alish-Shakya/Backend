@@ -31,3 +31,19 @@ export const readAllStudent = async (req, res, next) => {
     });
   }
 };
+
+export const readSingleStudent = async (req, res, next) => {
+  try {
+    let result = await Student.findById(req.params.id);
+    res.status(400).json({
+      success: true,
+      message: "single student retrived",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
