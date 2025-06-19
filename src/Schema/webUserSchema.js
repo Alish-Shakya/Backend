@@ -1,6 +1,6 @@
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
-const webUserSchema = new Mongoose.Schema({
+const webUserSchema = new mongoose.Schema({
   fullname: {
     type: String,
     required: true,
