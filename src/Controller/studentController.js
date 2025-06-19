@@ -65,3 +65,19 @@ export const updataStudent = async (req, res, next) => {
     });
   }
 };
+
+export const deleteStudent = async (req, res, next) => {
+  try {
+    let result = await Student.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "student deleted successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

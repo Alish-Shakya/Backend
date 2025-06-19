@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createStudent,
+  deleteStudent,
   readAllStudent,
   readSingleStudent,
   updataStudent,
@@ -13,4 +14,5 @@ studentRouter.route("/getAllStudent").get(readAllStudent);
 
 studentRouter.route("/singleStudent/:id").get(readSingleStudent);
 studentRouter.route("/updateStudent/:id").patch(updataStudent);
+studentRouter.route("/deleteStudent/:id").delete(deleteStudent);
 export default studentRouter;
