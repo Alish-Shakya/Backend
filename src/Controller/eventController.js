@@ -47,3 +47,21 @@ export const readSingleEvent = async (req, res, next) => {
     });
   }
 };
+
+export const updateEvent = async (req, res, next) => {
+  try {
+    let result = await Event.findByIdAndUpdate(req.param.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "event updated",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: true,
+      message: error.message,
+    });
+  }
+};
