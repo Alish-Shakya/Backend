@@ -66,4 +66,18 @@ export const updateCourse = async (req, res, next) => {
   }
 };
 
-export const deleteCourse = async (req, res, next) => {};
+export const deleteCourse = async (req, res, next) => {
+  try {
+    let result = await Course.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "course deleted successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

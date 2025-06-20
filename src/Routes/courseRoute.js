@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createCourse,
+  deleteCourse,
   readAllCourse,
   singleCourse,
   updateCourse,
@@ -13,4 +14,5 @@ courseRouter.route("/allCourse").get(readAllCourse);
 
 courseRouter.route("/singleCourse/:id").get(singleCourse);
 courseRouter.route("/updateCourse/:id").patch(updateCourse);
+courseRouter.route("/deleteCourse/:id").delete(deleteCourse);
 export default courseRouter;
