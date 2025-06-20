@@ -1,4 +1,4 @@
-let transporterInfo = {
+transporterInfo = {
   host: "smtp.gmail.com",
   port: 587,
   secure: false,

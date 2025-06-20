@@ -4,6 +4,7 @@ import userSchema from "../Schema/userSchema.js";
 import mongoose from "mongoose";
 import webUserSchema from "../Schema/webUserSchema.js";
 import courseSchema from "../Schema/courseSchema.js";
+import subjectSchema from "../Schema/subjectSchema.js";
 
 export const User = mongoose.model("User", userSchema);
 
@@ -14,3 +15,5 @@ export const Student = mongoose.model("Student", studentSchema);
 export const webUser = mongoose.model("webUser", webUserSchema);
 
 export const Course = mongoose.model("Course", courseSchema);
+
+export const Subject = mongoose.model("Subject", subjectSchema);

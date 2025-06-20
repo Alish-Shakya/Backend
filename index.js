@@ -4,6 +4,7 @@ import connectDB from "./src/ConnectDB/connectDB.js";
 import teacherRouter from "./src/Routes/teacherRoute.js";
 import studentRouter from "./src/Routes/studentRoute.js";
 import courseRouter from "./src/Routes/courseRoute.js";
+import subjectRouter from "./src/Routes/subjectRoute.js";
 
 const app = express();
 const port = 3000;
@@ -20,3 +21,4 @@ app.use("/user", userRouter);
 app.use("/teacher", teacherRouter);
 app.use("/student", studentRouter);
 app.use("/course", courseRouter);
+app.use("/subject", subjectRouter);
