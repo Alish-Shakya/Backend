@@ -47,3 +47,23 @@ export const singleCourse = async (req, res, next) => {
     });
   }
 };
+
+export const updateCourse = async (req, res, next) => {
+  try {
+    let result = await Course.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "student updatde",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const deleteCourse = async (req, res, next) => {};
