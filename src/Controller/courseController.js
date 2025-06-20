@@ -31,3 +31,19 @@ export const readAllCourse = async (req, res, next) => {
     });
   }
 };
+
+export const singleCourse = async (req, res, next) => {
+  try {
+    let result = await Course.findById(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "one course selected",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
