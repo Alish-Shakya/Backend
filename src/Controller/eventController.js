@@ -34,7 +34,7 @@ export const realAllEvent = async (req, res, next) => {
 
 export const readSingleEvent = async (req, res, next) => {
   try {
-    let result = await Event.findById(req.prams.id);
+    let result = await Event.findById(req.params.id);
     res.status(200).json({
       success: true,
       message: "single event retrived",
