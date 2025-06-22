@@ -5,9 +5,9 @@ import teacherRouter from "./src/Routes/teacherRoute.js";
 import studentRouter from "./src/Routes/studentRoute.js";
 import courseRouter from "./src/Routes/courseRoute.js";
 import subjectRouter from "./src/Routes/subjectRoute.js";
-import { createEvent } from "./src/Controller/eventController.js";
 import eventRouter from "./src/Routes/eventRouter.js";
 import noticeRouter from "./src/Routes/noticeRoute.js";
+import createMessage from "./src/Routes/messageRoute.js";
 
 const app = express();
 const port = 3000;
@@ -27,3 +27,4 @@ app.use("/course", courseRouter);
 app.use("/subject", subjectRouter);
 app.use("/event", eventRouter);
 app.use("/notice", noticeRouter);
+app.use("/message", createMessage);
