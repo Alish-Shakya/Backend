@@ -1,3 +1,5 @@
+import nodemailer from "nodemailer";
+
 const transporterInfo = {
   host: "smtp.gmail.com",
   port: 587,

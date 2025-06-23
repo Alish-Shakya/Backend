@@ -8,6 +8,7 @@ import subjectRouter from "./src/Routes/subjectRoute.js";
 import eventRouter from "./src/Routes/eventRouter.js";
 import noticeRouter from "./src/Routes/noticeRoute.js";
 import createMessage from "./src/Routes/messageRoute.js";
+import webUserRouter from "./src/Routes/webUserRouter.js";
 
 const app = express();
 const port = 3000;
@@ -28,3 +29,4 @@ app.use("/subject", subjectRouter);
 app.use("/event", eventRouter);
 app.use("/notice", noticeRouter);
 app.use("/message", createMessage);
+app.use("/webUser", webUserRouter);

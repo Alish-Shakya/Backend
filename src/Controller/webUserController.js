@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
-import { webUser } from "../Model/modol";
+import { webUser } from "../Model/modol.js";
 import jwt from "jsonwebtoken";
-import { sendEmail } from "../utils/sendEmail";
+import { sendEmail } from "../utils/sendEmail.js";
 
 export const register = async (req, res, next) => {
   try {
@@ -61,4 +61,44 @@ export const register = async (req, res, next) => {
       message: error.message,
     });
   }
+};
+
+export const verifyEmail = async (req, res, next) => {
+  try {
+    let tokenString = req.headers.authorization;
+    let tokenArray = tokenString.split(" ");
+    let token = tokenArray[1];
+
+    //id, iat, exp
+    let user = await jwt.verify(token, "n9solution");
+
+    let result = await webUser.findByIdAndUpdate(
+      user._id,
+      { isVerifiedEmail: true },
+      { new: true }
+    );
+    res.status(200).json({
+      success: true,
+      message: "message verified true",
+      result: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const Login = async (req, res, next) => {
+  try {
+    let email = req.body.email;
+    let password = req.body.password;
+
+    let user = await webUser.findOne({ email: email });
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+  } catch (error) {}
 };
