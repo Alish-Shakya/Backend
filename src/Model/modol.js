@@ -8,6 +8,7 @@ import subjectSchema from "../Schema/subjectSchema.js";
 import eventSchema from "../Schema/eventSchema.js";
 import noticeSchema from "../Schema/noticeSchema.js";
 import messageSchema from "../Schema/messageSchema.js";
+import feeSchema from "../Schema/feeSchema.js";
 
 export const User = mongoose.model("User", userSchema);
 
@@ -26,3 +27,5 @@ export const Event = mongoose.model("Event", eventSchema);
 export const Notice = mongoose.model("Notice", noticeSchema);
 
 export const Message = mongoose.model("Message", messageSchema);
+
+export const Fee = mongoose.model("Fee", feeSchema);
