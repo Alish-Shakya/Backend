@@ -10,6 +10,7 @@ import noticeRouter from "./src/Routes/noticeRoute.js";
 import createMessage from "./src/Routes/messageRoute.js";
 import webUserRouter from "./src/Routes/webUserRouter.js";
 import feeRouter from "./src/Routes/feeRoute.js";
+import libraryRouter from "./src/Routes/libraryRoute.js";
 
 const app = express();
 const port = 3000;
@@ -32,3 +33,4 @@ app.use("/notice", noticeRouter);
 app.use("/message", createMessage);
 app.use("/fee", feeRouter);
 app.use("/webUser", webUserRouter);
+app.use("/library", libraryRouter);

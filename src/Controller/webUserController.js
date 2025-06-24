@@ -100,5 +100,77 @@ export const Login = async (req, res, next) => {
     if (!user) {
       throw new Error("User not found");
     }
-  } catch (error) {}
+
+    if (!user.isVerifiedEmail) {
+      throw new Error("Email not verified");
+    }
+
+    let isValidPassword = await bcrypt.compare(password, user.password);
+
+    if (!isValidPassword) {
+      throw new Error("Invalid Credentials");
+    }
+
+    let infoObj = {
+      _id: user._id,
+    };
+
+    let secretKey = "n9solution";
+
+    let expiryInfo = {
+      expiresIn: "365d",
+    };
+
+    let token = await jwt.sign(infoObj, secretKey, expiryInfo);
+
+    res.status(200).json({
+      success: true,
+      message: "web user login successfully",
+      result: user,
+      token: token,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const myProfile = async (req, res, next) => {
+  try {
+    let id = req._id;
+    let result = await webUser.findById(id);
+    res.status(200).json({
+      success: true,
+      message: "webuser profile read successfully",
+      result: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const updateProfile = async (req, res, next) => {
+  try {
+    let id = req._id;
+    let data = req.body;
+    delete data.email;
+    delete data.password;
+
+    let result = await webUser.findByIdAndUpdate(id, data, { new: true });
+    res.status(200).json({
+      success: true,
+      message: "webuser profil updated",
+      result: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
