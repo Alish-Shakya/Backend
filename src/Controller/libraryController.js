@@ -65,3 +65,19 @@ export const updataLibrary = async (req, res, next) => {
     });
   }
 };
+
+export const deleteLibrary = async (req, res, next) => {
+  try {
+    let result = await Library.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "library deleted successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
