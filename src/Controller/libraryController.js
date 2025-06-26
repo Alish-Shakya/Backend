@@ -34,6 +34,16 @@ export const allBooks = async (req, res, next) => {
 
 export const singleBook = async (req, res, next) => {
   try {
-    let result = await Library.findById(req.params.id, req.body);
-  } catch (error) {}
+    let result = await Library.findById(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "single book retri",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
