@@ -47,3 +47,21 @@ export const singleBook = async (req, res, next) => {
     });
   }
 };
+
+export const updataLibrary = async (req, res, next) => {
+  try {
+    let result = await Library.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "library updated",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
