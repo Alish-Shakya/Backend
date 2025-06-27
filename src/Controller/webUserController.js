@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { webUser } from "../Model/modol.js";
 import jwt from "jsonwebtoken";
 import { sendEmail } from "../utils/sendEmail.js";
+import { secretKey } from "../utils/constant.js";
 
 export const register = async (req, res, next) => {
   try {
@@ -24,8 +25,6 @@ export const register = async (req, res, next) => {
     let infoObj = {
       _id: result._id,
     };
-
-    let secretKey = "n9solution";
 
     let expiryInfo = {
       expiresIn: "1h",
@@ -114,8 +113,6 @@ export const Login = async (req, res, next) => {
     let infoObj = {
       _id: user._id,
     };
-
-    let secretKey = "n9solution";
 
     let expiryInfo = {
       expiresIn: "365d",
