@@ -14,6 +14,7 @@ const webUserRouter = Router();
 webUserRouter.route("/register").post(register);
 
 webUserRouter.route("/verifyEmail").post(verifyEmail);
+
 webUserRouter.route("/login").post(Login);
 
 webUserRouter.route("/profile").get(isAuthenticated, myProfile);

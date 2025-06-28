@@ -10,6 +10,7 @@ import noticeSchema from "../Schema/noticeSchema.js";
 import messageSchema from "../Schema/messageSchema.js";
 import feeSchema from "../Schema/feeSchema.js";
 import LibrarySchema from "../Schema/librarySchema.js";
+import feedbackSchema from "../Schema/feedbackSchema.js";
 
 export const User = mongoose.model("User", userSchema);
 
@@ -30,4 +31,7 @@ export const Notice = mongoose.model("Notice", noticeSchema);
 export const Message = mongoose.model("Message", messageSchema);
 
 export const Fee = mongoose.model("Fee", feeSchema);
+
 export const Library = mongoose.model("Library", LibrarySchema);
+
+export const Feedback = mongoose.model("Feedback", feedbackSchema);

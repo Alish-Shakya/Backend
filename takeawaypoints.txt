@@ -52,5 +52,21 @@ log out
 
 
 
+http response status code
 
+Information Response (100-199)
+Successful Response (200-299)
+Redirection Response (300-399)
+Client error Response (400-499)
+Server error Response (500 - 599)
+
+200 - ok
+201 - created
+
+400 - Bad Request
+401 - unauthorized
+403 - Forbidden
+404 - Not found
+
+500 - Internal Server Error
 
