@@ -328,3 +328,19 @@ export const updateWeb = async (req, res, next) => {
     });
   }
 };
+
+export const deleteWeb = async (req, res, next) => {
+  try {
+    let result = await webUser.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "deleted user ",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

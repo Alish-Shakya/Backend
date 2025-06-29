@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  deleteWeb,
   forgotPassword,
   Login,
   myProfile,
@@ -40,4 +41,7 @@ webUserRouter.route("/single-webuser/:id").get(singleWeb);
 
 webUserRouter.route("/update-web/:id").patch(updateWeb);
 
+webUserRouter.route("/update-web/:id").patch(updateWeb);
+
+webUserRouter.route("/delete-pasal/:id").patch(deleteWeb);
 export default webUserRouter;
