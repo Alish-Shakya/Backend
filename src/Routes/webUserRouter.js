@@ -37,5 +37,7 @@ webUserRouter.route("/all-webUser").get(readAllWeb);
 // dynamic route
 
 webUserRouter.route("/single-webuser/:id").get(singleWeb);
-webUserRouter.route("update-web/:id").patch(updateWeb);
+
+webUserRouter.route("/update-web/:id").patch(updateWeb);
+
 export default webUserRouter;
