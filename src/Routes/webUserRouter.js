@@ -1,10 +1,15 @@
 import { Router } from "express";
 import {
+  forgotPassword,
   Login,
   myProfile,
+  readAllWeb,
   register,
+  resetPassword,
+  singleWeb,
   updatePassword,
   updateProfile,
+  updateWeb,
   verifyEmail,
 } from "../Controller/webUserController.js";
 import { isAuthenticated } from "../middleware/Authenticated.js";
@@ -23,4 +28,14 @@ webUserRouter.route("/update-profile").patch(isAuthenticated, updateProfile);
 
 webUserRouter.route("/update-password").patch(isAuthenticated, updatePassword);
 
+webUserRouter.route("/forgot-password").post(forgotPassword);
+
+webUserRouter.route("/reset-password").patch(isAuthenticated, resetPassword);
+
+webUserRouter.route("/all-webUser").get(readAllWeb);
+
+// dynamic route
+
+webUserRouter.route("/single-webuser/:id").get(singleWeb);
+webUserRouter.route("update-web/:id").patch(updateWeb);
 export default webUserRouter;

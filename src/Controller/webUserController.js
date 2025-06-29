@@ -211,3 +211,120 @@ export const updatePassword = async (req, res, next) => {
     });
   }
 };
+
+export const forgotPassword = async (req, res, next) => {
+  try {
+    let email = req.body.email;
+
+    let user = await webUser.findOne({ email: email });
+
+    if (user) {
+      let infoObj = {
+        _id: user._id,
+      };
+      let expiryInfo = {
+        expiresIn: "1h",
+      };
+
+      let token = await jwt.sign(infoObj, secretKey, expiryInfo);
+
+      await sendEmail({
+        to: user.email,
+        subject: "Reset Password",
+        html: `
+        <h1> Password Reset</h1>
+        <p> Click this link to reset your password </p>
+        <a href="http://localhost:3000/webuser/reset-password?token=${token}">
+        http://localhost:3000/webuser/reset-password?token=${token}
+       </a>
+
+        `,
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Password link has been sent to your email",
+        result: user,
+      });
+    } else {
+      console.log("User not found");
+    }
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const resetPassword = async (req, res, next) => {
+  try {
+    let password = req.body.password;
+    let hashedPasswod = await bcrypt.hash(password, 10);
+    let result = await webUser.findByIdAndUpdate(
+      req._id,
+      { password: hashedPasswod },
+      { new: true }
+    );
+    res.status(200).json({
+      success: true,
+      message: "password reset successfuly",
+      result: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const readAllWeb = async (req, res, next) => {
+  try {
+    let result = await webUser.find({});
+    res.status(200).json({
+      success: true,
+      message: "all user readed",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const singleWeb = async (req, res, next) => {
+  try {
+    let result = await webUser.findById(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "single web user retrived",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const updateWeb = async (req, res, next) => {
+  try {
+    let result = await webUser.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "updated user ",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
