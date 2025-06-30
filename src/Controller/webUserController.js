@@ -313,7 +313,14 @@ export const singleWeb = async (req, res, next) => {
 
 export const updateWeb = async (req, res, next) => {
   try {
-    let result = await webUser.findByIdAndUpdate(req.params.id, req.body, {
+
+
+    let id = req.params.id;
+    let data = req.body;
+    delete data.email;
+    delete data.password;
+
+    let result = await webUser.findByIdAndUpdate(id, data, {
       new: true,
     });
     res.status(200).json({
