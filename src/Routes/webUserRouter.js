@@ -38,10 +38,16 @@ webUserRouter
   .route("/all-webUser")
   .get(isAuthenticated, isAuthorized(["Admin", "SuperAdmin"]), readAllWeb);
 
-webUserRouter.route("/single-webuser/:id").get(singleWeb);
+webUserRouter
+  .route("/single-webuser/:id")
+  .get(isAuthenticated, isAuthorized(["Admin"]), singleWeb);
 
-webUserRouter.route("/update-web/:id").patch(updateWeb);
+webUserRouter
+  .route("/update-web/:id")
+  .patch(isAuthenticated, isAuthorized(["Admin"]), updateWeb);
 
-webUserRouter.route("/delete-web/:id").delete(deleteWeb);
+webUserRouter
+  .route("/delete-web/:id")
+  .delete(isAuthenticated, isAuthorized(["Admin"]), deleteWeb);
 
 export default webUserRouter;

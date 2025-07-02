@@ -17,4 +17,5 @@ userRouter.route("/get-all").get(readAllUser);
 userRouter.route("/single/:id").get(readSingle);
 userRouter.route("/update/:id").patch(updateUser);
 userRouter.route("/delete/:id").delete(deleteUser);
+
 export default userRouter;
