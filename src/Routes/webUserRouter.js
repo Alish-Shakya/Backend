@@ -20,7 +20,7 @@ const webUserRouter = Router();
 
 webUserRouter.route("/register").post(register);
 
-webUserRouter.route("/verifyEmail").post(verifyEmail);
+webUserRouter.route("/verifyEmail").get(verifyEmail);
 
 webUserRouter.route("/login").post(Login);
 

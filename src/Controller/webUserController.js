@@ -31,18 +31,19 @@ export const register = async (req, res, next) => {
     };
 
     let token = await jwt.sign(infoObj, secretKey, expiryInfo);
-
     await sendEmail({
       to: data.email,
       Subject: "Account registrition",
       html: `
-
+c
 
       <h1> Your account has been registered successfully </h1>
 
       <p>Click this link to verify your email </p>
 
-      <a href="http://locolhost:3000/webuser/verify-email?token=${token}">http://locolhost:3000/webuser/verify-email?token=${token}</a>
+      <a href="http://localhost:3000/webuser/verify-email?token=${token}">
+                http://localhost:3000/webuser/verify-email?token=${token}
+      </a>
 
 
       `,
@@ -69,7 +70,7 @@ export const verifyEmail = async (req, res, next) => {
     let token = tokenArray[1];
 
     //id, iat, exp
-    let user = await jwt.verify(token, "n9solution");
+    let user = await jwt.verify(token, secretKey  );
 
     let result = await webUser.findByIdAndUpdate(
       user._id,
@@ -313,8 +314,6 @@ export const singleWeb = async (req, res, next) => {
 
 export const updateWeb = async (req, res, next) => {
   try {
-
-
     let id = req.params.id;
     let data = req.body;
     delete data.email;

@@ -1,12 +1,13 @@
 // id, secretKey, expiryInfo
 
 import jwt from "jsonwebtoken";
+import { secretKey } from "./src/utils/constant.js";
 
 let infoObj = {
   id: "1234",
 };
 
-let secretKey = "n9solution";
+// let secretKey = "n9solution";
 
 // expiryInfo and expires must be sam
 let expiryInfo = {
